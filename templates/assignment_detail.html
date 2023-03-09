@@ -1,0 +1,51 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+  <br>
+  <div class="container rounded-4" style=" width: 80%; background-color: #8CBB80;" >
+    <br>
+    <ul class="list-group">
+      <li class="list-group-item"><h1>Assignments submitted by</h1></li>
+      {% if submissions %}
+        <li class="list-group-item">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Assignment</th>
+                <th>Submitted at</th>
+                <th>Submitted by</th>
+                <th>Grade</th>
+                {% if user.is_staff or user.is_superuser %}
+                  <th>give grade</th>
+                  <th>File</th>
+                {% endif %}
+              </tr>
+            </thead>
+            <tbody>
+              {% for submission in submissions %}
+                {% for student in students%}
+                  <tr>
+                    <td>{{ submission.assignment.title }}</td>
+                    <td>{{ submission.submitted_date }}</td>
+                    <td>{{ submission.student.user.username }}</td>
+                    <td>{{ submission.grade }}</td>
+                    {% if user.is_staff or user.is_superuser %}
+                      <td>
+                        <a href="{% url 'gradesubmission' submission.id submission.assignment.id %}">Grade</a>
+                      </td>
+                      <td><a href="{{ submission.file.url }}">View</a></td>
+                    {% endif %}
+                  </tr>
+                {% endfor %}
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p>No assignments submitted yet.</p>
+        {% endif %}
+      </li>
+    </ul>
+    <br>
+  </div>
+      
+{% endblock content %}

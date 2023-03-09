@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+    <br>
+    <div class="container rounded-4" style=" width: 80%; background-color: #8CBB80;" >
+        <ul class="list-group">
+            <br>
+            <li class="list-group-item"><h3>Section Name : {{ section.section_name }}</h3></li>
+            <li class="list-group-item"><h3>Teacher : {{ section.teacher }}</h3></li>
+            <li class="list-group-item"><h3>Students : </h3></li>
+            <li class="list-group-item">
+                <ul class="list-group">
+                    {% for student in students %}
+                        <li class="list-group-item">{{ student.user.username }} </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% if user.is_staff or user.is_superuser %}
+                <li class="list-group-item"><a class="nav-link active " aria-current="page" href="{% url 'assignment_creation' %}">Create assignment</a></li>
+            {% endif %}
+            <li class="list-group-item"><a class="nav-link active " aria-current="page" href="{% url 'submissionform' %}">submissionform</a></li>
+            <li class="list-group-item"><h2>Assignments :</h2></li>
+            <li class="list-group-item">
+                    {% if assignments %}
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col" >Name</th>
+                                    <th scope="col" >Description</th>
+                                    <th scope="col" >Date of assignment</th>
+                                    <th scope="col" >File</th>
+                                    <th scope="col" >More details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for assignment in assignments %}
+                                    <tr>
+                                        <td>{{ assignment.title }}</td>
+                                        <td>{{ assignment.description }}</td>
+                                        <td>{{ assignment.pub_date}}</td>
+                                        <td>
+                                            <a class="nav-link active " aria-current="page" href="{{assignment.file.url}}">View Asssignment Doc</a>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'assignment_detail' assignment.id %}">(View)</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                    <li class="list-group-item"><p>No assignments found for this section.</p></li>
+                {% endif %}
+            </li>
+        </ul>
+        <br>
+    </div>
+{% endblock content %}

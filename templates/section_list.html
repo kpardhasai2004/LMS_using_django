@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+    <br>
+    <div class="container rounded-4" style=" width: 80%; background-color: #8CBB80;">
+        <div class=" ">
+            <legend class="border-bottom mb-4 bg-info p-2 " >List of Students</legend>
+            <div class=" ">
+                <ul class="list-group">
+                    {% for section in sections%}
+                        <li class="list-group-item">
+                            <div class="">
+                                <div>Section - {{section.section_name}}</div>
+                                <div>Teacher - {{section.teacher}}</div>
+                                <div class="nav-item rounded-3">
+                                    <form action="{{section.id}}/" method="post">
+                                        {% csrf_token %}
+                                        <input class="btn btn-outline-success mx-1 mt-1" type="submit" value="More details">
+                                    </form> 
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <br>
+    </div>
+{% endblock content %}

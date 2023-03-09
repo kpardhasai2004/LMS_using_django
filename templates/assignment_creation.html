@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <br>
+    <div class="container rounded-4" style=" width: 80%; background-color: #8CBB80;">
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4 bg-info p-2 " style="color: rgb(0, 0, 0);">Create an assignment</legend>
+                <div class="text-dark">
+                    {{ form|crispy }}
+                </div>
+            </fieldset>
+            <div class="form-group" id="signup-button">
+                <button class="btn btn-outline-dark fw-bold ">Submit</button>
+            </div>
+            <br>
+        </form>
+        <br>
+    </div>
+{% endblock content %}

@@ -1,0 +1,40 @@
+body {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.navbar{
+    background-color: #296491;
+}
+
+.navbar-brand
+    {
+        --glow-color: rgb(66, 94, 255);
+        --glow-spread-color: rgba(81, 93, 205, 0.781);
+        --enhanced-glow-color: rgb(206, 216, 255);
+        --btn-color: rgb(39, 25, 138);
+        border: .25em solid var(--glow-color);
+        padding: .25em .25em;
+        color: var(--glow-color);
+        font-size: 15px;
+        font-weight: bold;
+        background-color: var(--btn-color);
+        border-radius: 1em;
+        outline: none;
+        box-shadow: 0 0 .25em .25em var(--glow-color),
+               0 0 .25em .25em var(--glow-spread-color),
+               inset 0 0 .75em .25em var(--glow-color);
+        text-shadow: 0 0 .5em var(--glow-color);
+        position: relative;
+        transition: all 0.3s;
+}
+
+.nav-item{
+    font-weight: bold;
+    color: black;
+    text-align: center;
+}
+
+
+

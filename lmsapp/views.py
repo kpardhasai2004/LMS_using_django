@@ -83,7 +83,7 @@ def submissionform(request):
         if form.is_valid():
             submission = form.save()
             messages.success(request, "Submission updated successfully.")
-            return redirect('section_detail')
+            return redirect('section_list')
     else:
         form = SubmissionForm()
     return render(request, 'submissionform.html', {'form': form})

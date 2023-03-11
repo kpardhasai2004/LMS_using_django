@@ -11,12 +11,14 @@
                     <a class="nav-link active " aria-current="page" href="{% url 'section_list' %}">Student lists</a>
                     <a class="nav-link active " aria-current="page" href="{% url 'assignment_creation' %}">Create assignment</a>
                     <a class="nav-link active " aria-current="page" href="{% url 'submissionform' %}">submissionform</a>
+                    <a class="nav-link active " aria-current="page" href="{% url 'section_create' %}">Create section</a>
                   {% elif user.is_staff %}
                     <h1 id="header-h1" class=" "> Welcome back,</h1>
                     <p id="header-paragraph" class="" >Please navigate through the linkes below.</p>
                     <a class="nav-link active " aria-current="page" href="{% url 'assignment_creation' %}">Create assignment</a>
                     <a class="nav-link active " aria-current="page" href="{% url 'section_list' %}">Student lists</a>
                     <a class="nav-link active " aria-current="page" href="{% url 'submissionform' %}">submissionform</a>
+                    <a class="nav-link active " aria-current="page" href="{% url 'section_create' %}">Create section</a>            
                   {% elif user.is_authenticated %}
                     <h1 id="header-h1" class=" "> Welcome </h1>
                     <h2 id="header-paragraph" class="" >This is a learning platform please go to the below link for submit your submission.</h2>
